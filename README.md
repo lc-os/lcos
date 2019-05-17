@@ -1,3 +1,3 @@
-# [网站地址](https://lcosgit.github.io/lcos/)
+# [blog网站地址](https://lcosgit.github.io/lcos/)
 
-# Flutter相关
+# [Flutter红包动画实现](https://github.com/LCOSGit/lcos/blob/master/red_packet.md)
