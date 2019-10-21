@@ -1,6 +1,6 @@
 # flutter 问题记录
 
-##安卓降级查询问题
+## 安卓降级查询问题
 
 Gradle task bundleRelease failed with exit code 1的意思是你出现了错误，但是没有给你说明错误原因 这是因为你的gradle与gradle-warp版本过高造成的
 
