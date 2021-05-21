@@ -4,6 +4,6 @@
 
 # [Flutter问题](https://lc-os.github.io/lcos/flutter_log)
 
-# [ipa](itms-services:///?action=download-manifest&url=https://gitee.com/lc_os/appbuild/blob/master/xss.plist)
+# [ipa](https://lc-os.github.io/lcos/ipa.html)
 
 
