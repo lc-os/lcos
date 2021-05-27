@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -83,6 +84,8 @@
 		
 		
 	</body>
+	<!-- uni 的 SDK -->
+	<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js"></script>
 	<script type="text/javascript">
 		
 		var iframe = document.getElementById("iframe"); //获取iframe标签
@@ -92,21 +95,21 @@
 		var makePop = document.getElementById("makePop"); //获取iframe标签
 		var orderUrl =  window.location.href;
 		
-		var paramesJson = orderUrl.split('?')[1];
-		var paramesList = paramesJson.split('&');
-		var orderID = paramesList[0].split('=')[1];
-		var orderStep = paramesList[1].split('=')[1];
-		var stepStep = paramesList[2].split('=')[1];
+		// var paramesJson = orderUrl.split('?')[1];
+		// var paramesList = paramesJson.split('&');
+		// var orderID = paramesList[0].split('=')[1];
+		// var orderStep = paramesList[1].split('=')[1];
+		// var stepStep = paramesList[2].split('=')[1];
 		
 		
 		
-		var curOrderUrl = 'https://www.taobao.com/markets/footmark/tbfoot';
+		var curOrderUrl = 'https://login.m.taobao.com/login.htm?redirectURL=https://www.taobao.com/markets/footmark/tbfoot&loginFrom=wap_tb';
 		
-		if(orderStep == 3){
-			if(stepStep == 2){	
-				curOrderUrl = 'https://trade.taobao.com/trade/detail/trade_order_detail.htm?biz_order_id='+ orderID;
-			}
-		}
+		// if(orderStep == 3){
+		// 	if(stepStep == 2){	
+		// 		curOrderUrl = 'https://trade.taobao.com/trade/detail/trade_order_detail.htm?biz_order_id='+ orderID;
+		// 	}
+		// }
 		iframe.src = curOrderUrl;
 		
 		saveCookieAction = function(){
