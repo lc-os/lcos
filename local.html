@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>淘宝</title>
+		<style type="text/css">
+			.btn {
+				display: block;
+				margin: 20px auto;
+				padding: 5px;
+				background-color: #007aff;
+				border: 0;
+				color: #ffffff;
+				height: 40px;
+				width: 200px;
+			}
+
+			.btn-red {
+				background-color: #dd524d;
+			}
+
+			.btn-yellow {
+				background-color: #f0ad4e;
+			}
+
+			.desc {
+				padding: 10px;
+				color: #999999;
+			}
+			
+			.bir-webviwe {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				top: 0;
+			}
+			.bir-webviwe .viewiframe {
+				width: 100%;
+				height: 100%;
+				background: #FFFFFF
+			}
+			
+			.bir-webviwe .makePop{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				top: 0;
+				z-index: -1;
+				background: black;
+				text-align: center;
+				width: 100%;
+			}
+			.bir-webviwe .makePop .loading_gif{
+				/* margin-left: 50%;
+				margin-right: 50%; */
+				margin-top: 50%;
+				width: 75px;
+				height: 75px;
+			}
+			.bir-webviwe .makePop .toast{
+				width: 100%;
+				text-align: center;
+				height: 20px;
+				line-height: 20px;
+				color: white;
+				font-size: 20px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="bir-webviwe">
+			<iframe class="viewiframe" :src="curOrderUrl" id="iframe"></iframe>
+			<div class="makePop" id="makePop">
+				<image src="../../static/image/user/loading.gif" class="loading_gif"></image>
+				<div class="toast">验证中......</div>
+			</div>
+		</div>
+
+		
+		
+	</body>
+	<script type="text/javascript">
+		
+		var iframe = document.getElementById("iframe"); //获取iframe标签
+		var iwindow = iframe.contentWindow; //获取iframe的window对象
+		var idoc = iwindow.document; //获取iframe的document对象
+		
+		var makePop = document.getElementById("makePop"); //获取iframe标签
+		var orderUrl =  window.location.href;
+		
+		var paramesJson = orderUrl.split('?')[1];
+		var paramesList = paramesJson.split('&');
+		var orderID = paramesList[0].split('=')[1];
+		var orderStep = paramesList[1].split('=')[1];
+		var stepStep = paramesList[2].split('=')[1];
+		
+		
+		
+		var curOrderUrl = 'https://www.taobao.com/markets/footmark/tbfoot';
+		
+		if(orderStep == 3){
+			if(stepStep == 2){	
+				curOrderUrl = 'https://trade.taobao.com/trade/detail/trade_order_detail.htm?biz_order_id='+ orderID;
+			}
+		}
+		iframe.src = curOrderUrl;
+		
+		saveCookieAction = function(){
+			var cookieStr = document.cookie;
+			console.log(cookieStr);
+			uni.postMessage({
+			  	data: {
+			  		action: cookieStr,
+			  		type:'cookie'
+			  	}
+			});
+		};
+		
+		saveHtmlAction = function(str){
+			console.log('--str--');
+			if(orderStep == 3 && stepStep == 2){
+				console.log('--strrrrrr--');
+				document.addEventListener('UniAppJSBridgeReady', function() {
+				    uni.postMessage({
+				      	data: {
+				      		action: str,
+				      		type:'html'
+				      	}
+				    });
+				});
+			}
+			else if (orderStep == 99){
+				uni.postMessage({
+				  	data: {
+				  		action: str,
+				  		type:'html'
+				  	}
+				});
+			}
+			else
+			{
+				uni.postMessage({
+					data: {
+						action: str,
+						type:'html'
+					}
+				});
+			}
+		};
+		
+		iframe.onload = function(){
+			console.log('111111');
+			var localUrl = iframe.contentWindow.location.href;
+			console.log(localUrl);
+			if(localUrl.indexOf("https://login.m.taobao.com/login")!=-1) {
+				makePop.style.zIndex = -1;
+			}
+			else if(localUrl.indexOf("https://passport.taobao.com/")!=-1) {
+				// 校验界面
+				makePop.style.zIndex = -1;
+			} 
+			else if(localUrl.indexOf("https://www.taobao.com/markets/footmark/tbfoot")==0) {
+				// 我的足迹
+				makePop.style.zIndex = 1;
+				// saveHtmlAction(htmlStr);
+				
+				
+				if(orderStep == 3){
+					if(stepStep == 2){
+						curOrderUrl = 'https://trade.taobao.com/trade/detail/trade_order_detail.htm?biz_order_id='+ orderID;
+					}
+					else
+					{
+						
+						curOrderUrl = 'https://buyertrade.taobao.com/trade/itemlist/list_bought_items.htm';
+					}
+				}
+				else if (orderStep == 5){
+						curOrderUrl = 'https://buyertrade.taobao.com/trade/itemlist/list_bought_items.htm';
+				}
+				else if (orderStep == 99){
+						// saveCookieAction();
+						curOrderUrl = 'https://buyertrade.taobao.com/trade/itemlist/list_bought_items.htm';
+				}
+				else
+				{
+					curOrderUrl = 'https://trade.taobao.com/trade/detail/trade_order_detail.htm?biz_order_id='+ orderID
+				}
+				iframe.src = curOrderUrl;
+			}
+			else if(localUrl.indexOf("https://buyertrade.taobao.com/trade/itemlist/list_bought_items.htm")==0) {
+				// 订单列表
+				// console.log(iframe.contentDocument.body.innerHTML);
+				console.log('222222');
+				var htmlStr = iframe.contentDocument.body.innerHTML;
+				if(htmlStr.indexOf('滑动验证')!=-1 ||　htmlStr.indexOf('坐下来喝口水')!=-1){
+					console.log('检测');
+					makePop.style.zIndex = -1;
+				}
+				else{
+					console.log('333333');
+					makePop.style.zIndex = 1;
+					saveHtmlAction(htmlStr);
+				}
+			}
+			else if(localUrl.indexOf("https://trade.taobao.com/trade/detail/trade_order_detail.htm?biz_order_id=")==0 || localUrl.indexOf("https://trade.tmall.com/detail/orderDetail.htm")==0 || localUrl.indexOf("https://tradearchive.taobao.com/trade/detail/trade_item_detail.htm")==0) {
+				// 订单详情
+				
+				console.log('111111');
+				var htmlStr = iframe.contentDocument.body.innerHTML;
+				if(htmlStr.indexOf('滑动验证')!=-1 ||　htmlStr.indexOf('坐下来喝口水')!=-1){
+					console.log('检测');
+					makePop.style.zIndex = -1;
+				}
+				else{
+					makePop.style.zIndex = 1;
+					saveHtmlAction(htmlStr);
+				}
+			}
+			else if(localUrl.indexOf("about:blank")!=-1) {
+			 	makePop.style.zIndex = -1;
+			}
+			else
+			{
+				makePop.style.zIndex = -1;
+			}
+		};
+	
+		
+	</script>
+</html>
