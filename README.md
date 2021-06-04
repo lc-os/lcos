@@ -4,6 +4,6 @@
 
 # [Flutter问题](https://lc-os.github.io/lcos/flutter_log)
 
-# [ipa](https://lc-os.github.io/lcos/ipa.html)
+# [flutter躺平神器](https://github.com/lc-os/buildapp)
 
 
