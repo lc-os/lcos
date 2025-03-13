@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测测App - 解读模块</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            padding-bottom: 80px;
+        }
+
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .tab-item.active {
+            color: #5046e5;
+        }
+
+        .tab-item i {
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+
+        .card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .category-tabs {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .category-tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+
+        .category-tab.active {
+            background-color: #5046e5;
+            color: white;
+        }
+
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .zodiac-item {
+            background-color: white;
+            border-radius: 16px;
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .zodiac-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f2f0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            color: #5046e5;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <span>12:30</span>
+        <div>
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <div class="bg-white pt-4 pb-2 px-4">
+        <h1 class="text-xl font-bold">解读</h1>
+    </div>
+
+    <!-- 分类标签 -->
+    <div class="bg-white p-4">
+        <div class="category-tabs">
+            <div class="category-tab active">星座</div>
+            <div class="category-tab">生辰</div>
+            <div class="category-tab">缘分合盘</div>
+            <div class="category-tab">生肖</div>
+            <div class="category-tab">命理</div>
+            <div class="category-tab">塔罗</div>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="px-4 py-4">
+        <!-- 热门解读 -->
+        <div class="card bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 mb-6">
+            <h2 class="font-bold text-lg">星座月运势</h2>
+            <p class="text-sm mt-1 opacity-90">专业占星师为你解读本月星座运势</p>
+            <button class="mt-3 bg-white text-indigo-600 text-xs font-medium py-2 px-4 rounded-full">立即查看</button>
+        </div>
+
+        <!-- 星座网格 -->
+        <h2 class="text-lg font-bold mb-4">十二星座解读</h2>
+        <div class="zodiac-grid mb-6">
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <p class="font-medium text-sm">白羊座</p>
+                <p class="text-xs text-gray-500">3.21-4.19</p>
+            </div>
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <p class="font-medium text-sm">金牛座</p>
+                <p class="text-xs text-gray-500">4.20-5.20</p>
+            </div>
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <p class="font-medium text-sm">双子座</p>
+                <p class="text-xs text-gray-500">5.21-6.21</p>
+            </div>
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <p class="font-medium text-sm">巨蟹座</p>
+                <p class="text-xs text-gray-500">6.22-7.22</p>
+            </div>
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <p class="font-medium text-sm">狮子座</p>
+                <p class="text-xs text-gray-500">7.23-8.22</p>
+            </div>
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <p class="font-medium text-sm">处女座</p>
+                <p class="text-xs text-gray-500">8.23-9.22</p>
+            </div>
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <p class="font-medium text-sm">天秤座</p>
+                <p class="text-xs text-gray-500">9.23-10.23</p>
+            </div>
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <p class="font-medium text-sm">天蝎座</p>
+                <p class="text-xs text-gray-500">10.24-11.22</p>
+            </div>
+            <div class="zodiac-item">
+                <div class="zodiac-icon">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <p class="font-medium text-sm">射手座</p>
+                <p class="text-xs text-gray-500">11.23-12.21</p>
+            </div>
+        </div>
+
+        <!-- 缘分解读 -->
+        <h2 class="text-lg font-bold mb-3">缘分配对</h2>
+        <div class="card bg-white p-4 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center">
+                        <i class="fas fa-venus text-pink-500"></i>
+                    </div>
+                    <div class="mx-3 text-center">
+                        <i class="fas fa-heart text-red-500"></i>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-mars text-blue-500"></i>
+                    </div>
+                </div>
+                <button class="bg-indigo-600 text-white text-xs py-2 px-4 rounded-full">开始配对</button>
+            </div>
+            <p class="text-sm text-gray-600">探索你们之间的星座匹配度，了解感情走向与相处之道</p>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </div>
+        <div class="tab-item active">
+            <i class="fas fa-star"></i>
+            <span>解读</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-tools"></i>
+            <span>工具</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-gamepad"></i>
+            <span>趣味</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+
+</html>

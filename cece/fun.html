@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测测App - 趣味模块</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            padding-bottom: 80px;
+        }
+
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .tab-item.active {
+            color: #5046e5;
+        }
+
+        .tab-item i {
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+
+        .card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .fun-card {
+            position: relative;
+            height: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .fun-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 20px;
+            color: white;
+        }
+
+        .sprite-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .sprite-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <span>12:30</span>
+        <div>
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <div class="bg-white pt-4 pb-2 px-4">
+        <h1 class="text-xl font-bold">趣味</h1>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="px-4 py-4">
+        <!-- 幸运地图 -->
+        <div class="fun-card mb-6"
+            style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center;">
+            <div class="fun-card-overlay">
+                <h2 class="font-bold text-lg">幸运地图</h2>
+                <p class="text-sm mt-1 opacity-90">探索你的幸运方位和城市</p>
+                <button class="mt-3 bg-white text-indigo-600 text-xs font-medium py-2 px-4 rounded-full">开始探索</button>
+            </div>
+        </div>
+
+        <!-- 星座精灵 -->
+        <h2 class="text-lg font-bold mb-4">星座精灵</h2>
+        <div class="sprite-card mb-4">
+            <div class="sprite-avatar">
+                <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    alt="精灵" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <h3 class="font-medium">水瓶座精灵</h3>
+                <p class="text-xs text-gray-500 mt-1">Lv.5 | 友好度: 78%</p>
+                <button class="mt-2 bg-indigo-100 text-indigo-600 text-xs py-1 px-3 rounded-full">互动</button>
+            </div>
+        </div>
+
+        <!-- 解锁更多精灵 -->
+        <div class="grid grid-cols-4 gap-3 mb-6">
+            <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-red-100 flex items-center justify-center">
+                    <i class="fas fa-fire text-red-500"></i>
+                </div>
+                <p class="text-xs mt-1">白羊座</p>
+            </div>
+            <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-green-100 flex items-center justify-center">
+                    <i class="fas fa-leaf text-green-500"></i>
+                </div>
+                <p class="text-xs mt-1">金牛座</p>
+            </div>
+            <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-yellow-100 flex items-center justify-center">
+                    <i class="fas fa-wind text-yellow-500"></i>
+                </div>
+                <p class="text-xs mt-1">双子座</p>
+            </div>
+            <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-gray-100 flex items-center justify-center">
+                    <i class="fas fa-plus text-gray-500"></i>
+                </div>
+                <p class="text-xs mt-1">更多</p>
+            </div>
+        </div>
+
+        <!-- 趣味测试 -->
+        <h2 class="text-lg font-bold mb-3">趣味测试</h2>
+        <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="card bg-white overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    class="w-full h-24 object-cover" alt="前世今生">
+                <div class="p-3">
+                    <h3 class="font-medium text-sm">前世今生</h3>
+                    <p class="text-xs text-gray-500 mt-1">探索你的前世身份</p>
+                </div>
+            </div>
+            <div class="card bg-white overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                    class="w-full h-24 object-cover" alt="灵魂颜色">
+                <div class="p-3">
+                    <h3 class="font-medium text-sm">灵魂颜色</h3>
+                    <p class="text-xs text-gray-500 mt-1">发现你的灵魂色彩</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 每日运势 -->
+        <h2 class="text-lg font-bold mb-3">每日运势</h2>
+        <div class="card bg-white p-4 mb-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-medium">今日幸运数字</h3>
+                    <p class="text-xs text-gray-600 mt-1">每天更新一次</p>
+                </div>
+                <div
+                    class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold text-xl">
+                    7
+                </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-gray-100">
+                <div class="flex justify-between text-sm">
+                    <span>幸运色</span>
+                    <span class="font-medium">紫色</span>
+                </div>
+                <div class="flex justify-between text-sm mt-2">
+                    <span>幸运方位</span>
+                    <span class="font-medium">东北</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-star"></i>
+            <span>解读</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-tools"></i>
+            <span>工具</span>
+        </div>
+        <div class="tab-item active">
+            <i class="fas fa-gamepad"></i>
+            <span>趣味</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+
+</html>

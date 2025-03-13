@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测测App - 原型展示</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .device-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .device {
+            width: 375px;
+            height: 812px;
+            background-color: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border: 12px solid #111;
+            margin-bottom: 3rem;
+        }
+
+        .device-title {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6 text-center">
+        <h1 class="text-3xl font-bold">测测App - 高保真原型</h1>
+        <p class="mt-2">全面星座、性格解读测试平台</p>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="device-container">
+            <div>
+                <h2 class="device-title">首页</h2>
+                <div class="device">
+                    <iframe src="home.html"></iframe>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="device-title">解读模块</h2>
+                <div class="device">
+                    <iframe src="reading.html"></iframe>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="device-title">工具模块</h2>
+                <div class="device">
+                    <iframe src="tools.html"></iframe>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="device-title">趣味模块</h2>
+                <div class="device">
+                    <iframe src="fun.html"></iframe>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="device-title">测试模块</h2>
+                <div class="device">
+                    <iframe src="tests.html"></iframe>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="device-title">个人中心</h2>
+                <div class="device">
+                    <iframe src="profile.html"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white p-6 text-center">
+        <p>© 2023 测测App - 原型设计</p>
+    </footer>
+</body>
+
+</html>

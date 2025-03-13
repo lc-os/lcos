@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测测App - 首页</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            padding-bottom: 80px;
+        }
+
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .tab-item.active {
+            color: #5046e5;
+        }
+
+        .tab-item i {
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+
+        .card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .banner {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 180px;
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 20px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <span>12:30</span>
+        <div>
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <div class="bg-white pt-4 pb-2 px-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">测测</h1>
+        <div>
+            <button class="p-2"><i class="fas fa-search text-gray-600"></i></button>
+            <button class="p-2"><i class="fas fa-bell text-gray-600"></i></button>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="px-4 py-3">
+        <!-- 轮播banner -->
+        <div class="banner mb-5">
+            <div class="banner-overlay">
+                <h2 class="text-xl font-bold">发现你的星座密码</h2>
+                <p class="text-sm mt-1 opacity-90">深入了解星座影响下的性格特质</p>
+            </div>
+        </div>
+
+        <!-- 推荐测试 -->
+        <h2 class="text-lg font-bold mb-3">热门测试</h2>
+        <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="card bg-white">
+                <div class="w-full h-24 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center">
+                    <i class="fas fa-brain text-white text-2xl"></i>
+                </div>
+                <div class="p-3">
+                    <h3 class="font-medium text-sm">MBTI性格测试</h3>
+                    <p class="text-xs text-gray-500 mt-1">探索你的性格类型</p>
+                </div>
+            </div>
+            <div class="card bg-white">
+                <div class="w-full h-24 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                    <i class="fas fa-mask text-white text-2xl"></i>
+                </div>
+                <div class="p-3">
+                    <h3 class="font-medium text-sm">隐藏人格测试</h3>
+                    <p class="text-xs text-gray-500 mt-1">揭示你不为人知的一面</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 今日运势 -->
+        <h2 class="text-lg font-bold mb-3">今日运势</h2>
+        <div class="card bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-4 mb-6">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                    <i class="fas fa-star text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <h3 class="font-bold">白羊座</h3>
+                    <p class="text-xs opacity-90">3月21日 - 4月19日</p>
+                </div>
+            </div>
+            <p class="mt-3 text-sm">今天你的创造力特别强，是开始新项目的好时机。人际关系方面可能有意外惊喜。</p>
+            <button class="mt-3 bg-white bg-opacity-20 text-white text-xs py-2 px-4 rounded-full">查看详情</button>
+        </div>
+
+        <!-- 解读工具 -->
+        <h2 class="text-lg font-bold mb-3">实用工具</h2>
+        <div class="grid grid-cols-4 gap-3 mb-6">
+            <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-blue-100 flex items-center justify-center">
+                    <i class="fas fa-moon text-blue-600"></i>
+                </div>
+                <p class="text-xs mt-1">星盘</p>
+            </div>
+            <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-pink-100 flex items-center justify-center">
+                    <i class="fas fa-heart text-pink-600"></i>
+                </div>
+                <p class="text-xs mt-1">合盘</p>
+            </div>
+            <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-green-100 flex items-center justify-center">
+                    <i class="fas fa-calendar text-green-600"></i>
+                </div>
+                <p class="text-xs mt-1">生辰</p>
+            </div>
+            <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-purple-100 flex items-center justify-center">
+                    <i class="fas fa-dice text-purple-600"></i>
+                </div>
+                <p class="text-xs mt-1">星骰</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab-item active">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-star"></i>
+            <span>解读</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-tools"></i>
+            <span>工具</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-gamepad"></i>
+            <span>趣味</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+
+</html>
